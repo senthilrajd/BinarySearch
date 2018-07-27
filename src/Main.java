@@ -7,7 +7,7 @@ public class Main {
 
         int length = a.length;
         int start = 0;
-        int find_number = 5;
+        int find_number = 3;
 
         int pos = BinarySearch(a, start, length-1, find_number);
         System.out.println(pos);
@@ -25,15 +25,14 @@ public class Main {
         if(length > start) {
             int mid = start + (length - 1 ) / 2;
 
-            if (a[mid] == find_number) {
-                return mid;
-            }
-
             if (a[mid] > find_number) {
                 return BinarySearch(a, start, mid - 1, find_number);
             }
-
-            return BinarySearch(a, mid + 1, length, find_number);
+            else if (a[mid] < find_number) {
+                return BinarySearch(a, mid + 1, length, find_number);
+            }
+            else
+                return mid;
         }
         else
             return -1;
